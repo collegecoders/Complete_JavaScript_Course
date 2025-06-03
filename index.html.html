@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Furniture Shop</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        background-color: #fefaf6;
+      }
+
+      header {
+        background-color: #8b5e3c;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+      }
+
+      .products {
+        flex: 2;
+        background-color: #fff8e6;
+        padding: 20px;
+        min-width: 320px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+        border-right: 2px solid #ccc;
+      }
+
+      .cart {
+        flex: 1;
+        background-color: #ffe2c6;
+        padding: 20px;
+        min-width: 320px;
+      }
+
+      .product,
+      .cart-item {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        background-color: #fff;
+        padding: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .product img {
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      button {
+        padding: 6px 12px;
+        background-color: #b86f50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 8px;
+      }
+
+      button:hover {
+        background-color: #a95d40;
+      }
+
+      .cart-item {
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+      }
+
+      .cart-item img {
+        width: 60px;
+        height: 60px;
+        border-radius: 6px;
+      }
+
+      .summary {
+        margin-top: 20px;
+        background-color: #fff2df;
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid #e0a96d;
+      }
+
+      .summary p {
+        margin: 8px 0;
+        font-weight: bold;
+      }
+
+      .summary p.total {
+        font-size: 1.2rem;
+        color: #8b0000;
+      }
+    </style>
+  </head>
+  <body>
+    <header>🪑 Modern Furniture Store</header>
+    <div class="container">
+      <div class="products" id="product-list"></div>
+
+      <div class="cart">
+        <h2>🛒 Cart</h2>
+        <div id="cart-items"></div>
+        <div class="summary" id="summary"></div>
+      </div>
+    </div>
+
+    <script>
+      const TAX_RATE = 0.1;
+      const DELIVERY_FEE = 40;
+
+      const products = [
+        {
+          id: 1,
+          name: "Plastic Stool",
+          price: 30,
+          img: "https://imgs.search.brave.com/8an8juTa0xmv1mDYCWTQYFzJ1n_ewEpx-UHH6mNuMtA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly81Lmlt/aW1nLmNvbS9kYXRh/NS9HVS9HVi9NWS0z/MDAxODE5NC9wZi05/MDItMjEtMjctMjct/c3Rvb2wtMjUweDI1/MC5qcGc",
+        },
+        {
+          id: 2,
+          name: "Mini Table",
+          price: 50,
+          img: "https://imgs.search.brave.com/1czagWaj0zEnJmaHh2SXfT8kt0L_Rg6Qhw8Yyigt2eM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFTY2tna0V4Zkwu/anBn",
+        },
+        {
+          id: 3,
+          name: "Small Bookshelf",
+          price: 60,
+          img: "https://imgs.search.brave.com/oN4bnLbJWE9WfD6Bmejb-cXZ39T7J2hKcS005g4tHEE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90My5m/dGNkbi5uZXQvanBn/LzEwLzk0LzkzLzYw/LzM2MF9GXzEwOTQ5/MzYwMTRfOWJZVTNJ/UXc0Yzl4Wk13bnpK/dGhXNE9qSjZBZ1Ux/NGUuanBn",
+        },
+        {
+          id: 4,
+          name: "Compact Drawer",
+          price: 45,
+          img: "https://imgs.search.brave.com/81rNfdaDGptyqASnQFakUCim5sNaltIp6ey7H7kPHUQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFmVmJLT0hDb0wu/anBn",
+        },
+        {
+          id: 5,
+          name: "Foot Rest",
+          price: 35,
+          img: "https://imgs.search.brave.com/ld2Rw28SUdeOCao1S6HQMwUrzt8El2SspNFME-OOSS8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFqdUo0NUp0VEwu/anBn",
+        },
+      ];
+
+      const cart = [];
+
+      function displayProducts() {
+        const list = document.getElementById("product-list");
+        list.innerHTML = "";
+        products.forEach((product) => {
+          const tax = product.price * TAX_RATE;
+          const totalWithTax = product.price + tax;
+          const div = document.createElement("div");
+          div.className = "product";
+          div.innerHTML = `
+            <img src="${product.img}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>₹${product.price}</p>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+          `;
+          list.appendChild(div);
+        });
+      }
+
+      function addToCart(productId) {
+        const existing = cart.find((item) => item.id === productId);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          const product = products.find((p) => p.id === productId);
+          cart.push({ ...product, quantity: 1 });
+        }
+        updateCart();
+      }
+
+      function removeOne(index) {
+        if (cart[index].quantity > 1) {
+          cart[index].quantity--;
+        } else {
+          cart.splice(index, 1);
+        }
+        updateCart();
+      }
+
+      function updateCart() {
+        const cartContainer = document.getElementById("cart-items");
+        cartContainer.innerHTML = "";
+
+        cart.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.className = "cart-item";
+          div.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <div>
+              <p>${item.name} (x${item.quantity}) - ₹${item.price} each</p>
+              <button onclick="removeOne(${index})">Remove One</button>
+            </div>
+          `;
+          cartContainer.appendChild(div);
+        });
+
+        updateSummary();
+      }
+
+      function updateSummary() {
+        const itemTotal = cart.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        );
+        const deliveryFee = cart.length > 0 ? DELIVERY_FEE : 0;
+        const beforeTax = itemTotal + deliveryFee;
+        const tax = beforeTax * TAX_RATE;
+        const total = beforeTax + tax;
+
+        document.getElementById("summary").innerHTML = `
+          <p>Items Total: ₹${itemTotal.toFixed(2)}</p>
+          <p>Delivery Fee: ₹${deliveryFee.toFixed(2)}</p>
+          <p>Total Before Tax: ₹${beforeTax.toFixed(2)}</p>
+          <p>Estimated Tax (10%): ₹${tax.toFixed(2)}</p>
+          <p class="total">Order Total: ₹${total.toFixed(2)}</p>
+        `;
+      }
+
+      displayProducts();
+    </script>
+  </body>
+</html>
