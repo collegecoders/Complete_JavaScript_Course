@@ -1,0 +1,16 @@
+🟢 Simple:
+1. What is the total price of 2 markers at ₹25 each and 1 notebook at ₹60?
+→ 2 × 25 + 60 = ₹110
+
+2. What is the final total after adding a ₹40 delivery fee to an item total of ₹180?
+→ 180 + 40 = ₹220
+
+🔴 Challenging:
+3. 3 lamps at ₹320 each and 2 extension boards at ₹450 each, ₹60 delivery, 10% tax
+→ (3 × 320 + 2 × 450 + 60) × 1.10 = ₹2112
+
+4. 4 posters at ₹150 each + 1 frame ₹900, ₹100 discount, ₹50 delivery, 10% tax
+→ (4 × 150 + 900 − 100 + 50) × 1.10 = ₹1595
+
+5. Item total ₹2100, ₹200 discount, ₹70 delivery, 10% tax
+→ (2100 − 200 + 70) × 1.10 = ₹2167
