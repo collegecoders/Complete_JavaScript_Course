@@ -58,8 +58,5 @@ Value: ${String(100) + 50}
 // ➡ Output 2: "Hello55"  
 // 🔍 Explanation: First does math inside parentheses, second concatenates left to right.
 
-// 3j) Write a template string that outputs:  
-// “The final price is ₹550 including ₹50 delivery charge.”
-The final price is ₹${500 + 50} including ₹50 delivery charge.
-// ➡ Output: "The final price is ₹550 including ₹50 delivery charge."
-// 🔍 Explanation: Expression inside ${} is evaluated before concatenation.
+// 3j) Try to add some products into cart and calculate them using template strings
+//  Note: If you are unable to to it. Just Follow Lesson 3
