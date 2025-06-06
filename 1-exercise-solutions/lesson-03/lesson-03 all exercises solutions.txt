@@ -1,0 +1,65 @@
+// 3a) What will be the result of: "Welcome" + " to " + "JavaScript"?
+"Welcome" + " to " + "JavaScript"
+// ➡ Output: "Welcome to JavaScript"
+// 🔍 Explanation: Simple string concatenation using +.
+
+// 3b) What is the result of: "The total is: " + 10 + 5?
+"The total is: " + 10 + 5
+// ➡ Output: "The total is: 105"
+// 🔍 Explanation: JavaScript reads left to right:
+// "The total is: 10" + 5 = "The total is: 105"
+
+// 3c) What is the output of: "Total: " + (10 + 5)?
+"Total: " + (10 + 5)
+// ➡ Output: "Total: 15"
+// 🔍 Explanation: Parentheses make 10 + 5 evaluated first, then concatenated.
+
+// 3d) What will this template string return: Result is ${10 + 5}?
+Result is ${10 + 5}
+// ➡ Output: "Result is 15"
+// 🔍 Explanation: Template literals evaluate expressions inside ${...}.
+
+// 3e) What is the difference between:
+// "The price is " + 50 + " rupees"  
+// and  
+// The price is ${50} rupees?
+"The price is " + 50 + " rupees"
+The price is ${50} rupees
+// ➡ Output: Both return "The price is 50 rupees"
+// 🔍 Explanation: First uses string concatenation, second uses template literals.
+
+// 3f) What will this output: 10 + 20 = ${"10" + 20}?
+10 + 20 = ${"10" + 20}
+// ➡ Output: "10 + 20 = 1020"
+// 🔍 Explanation: "10" + 20 inside template literal concatenates as strings.
+
+// 3g) Predict the output of:
+// Sum: ${5 + "5"}  
+// and  
+// Sum: ${5 + 5}?
+Sum: ${5 + "5"}
+Sum: ${5 + 5}
+// ➡ Output 1: "Sum: 55"  
+// ➡ Output 2: "Sum: 10"  
+// 🔍 Explanation: First adds number and string (concatenation), second adds two numbers.
+
+// 3h) What will this output: Value: ${String(100) + 50}?
+Value: ${String(100) + 50}
+// ➡ Output: "Value: 10050"
+// 🔍 Explanation: String(100) converts number to string, concatenated with 50.
+
+// 3i) What is the difference in output between:
+// "Hello" + (5 + 5)  
+// and  
+// "Hello" + 5 + 5?
+"Hello" + (5 + 5)
+"Hello" + 5 + 5
+// ➡ Output 1: "Hello10"  
+// ➡ Output 2: "Hello55"  
+// 🔍 Explanation: First does math inside parentheses, second concatenates left to right.
+
+// 3j) Write a template string that outputs:  
+// “The final price is ₹550 including ₹50 delivery charge.”
+The final price is ₹${500 + 50} including ₹50 delivery charge.
+// ➡ Output: "The final price is ₹550 including ₹50 delivery charge."
+// 🔍 Explanation: Expression inside ${} is evaluated before concatenation.
