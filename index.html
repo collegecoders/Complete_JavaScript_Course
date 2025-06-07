@@ -8,138 +8,82 @@
     body {
       font-family: "Segoe UI", sans-serif;
       margin: 0;
-      background: #fdfcfb;
-      color: #333;
+      background-color: #f8f9fa;
     }
 
     header {
-      background: linear-gradient(to right, #8b5e3c, #a97b5a);
+      background-color: #1e3d59;
       color: white;
       padding: 1rem;
       text-align: center;
-      font-size: 1.7rem;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      font-size: 1.8rem;
+      font-weight: bold;
     }
 
     .container {
       display: flex;
       flex-wrap: wrap;
       padding: 20px;
-      gap: 20px;
     }
 
     .products {
       flex: 2;
+      background-color: #ffffff;
+      padding: 20px;
       min-width: 320px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
+      border-right: 2px solid #d9d9d9;
     }
 
-    .product {
-      border-radius: 10px;
+    .cart {
+      flex: 1;
+      background-color: #f0f4f8;
+      padding: 20px;
+      min-width: 320px;
+    }
+
+    .product,
+    .cart-item {
+      border: 1px solid #ddd;
+      border-radius: 8px;
       background-color: #fff;
       padding: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
       display: flex;
       flex-direction: column;
       align-items: center;
-      transition: transform 0.2s ease;
-    }
-
-    .product:hover {
-      transform: translateY(-4px);
-    }
-
-    .product img {
-      width: 120px;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 10px;
+      text-align: center;
       margin-bottom: 10px;
     }
 
-    .product h3 {
-      font-size: 1rem;
-      margin: 8px 0 4px;
-    }
-
-    .product p {
-      font-weight: bold;
-      color: #5b3622;
+    .product img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
       margin-bottom: 10px;
     }
 
     button {
       padding: 6px 12px;
-      background-color: #8b5e3c;
+      background-color: #1e3d59;
       color: white;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      transition: background 0.2s;
+      margin-top: 8px;
     }
 
     button:hover {
-      background-color: #a56d4c;
-    }
-
-    .cart {
-      flex: 1;
-      background-color: #fff8f0;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      min-width: 320px;
-    }
-
-    .cart-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .cart-header h2 {
-      font-size: 1.3rem;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    #cart-quantity {
-      width: 36px;
-      text-align: center;
-      font-weight: bold;
-      font-size: 0.9rem;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    #clear-cart-btn {
-      background-color: #e74c3c;
-      padding: 5px 10px;
-      font-size: 0.8rem;
-      border-radius: 4px;
-    }
-
-    #clear-cart-btn:hover {
-      background-color: #c0392b;
+      background-color: #163043;
     }
 
     .cart-item {
-      display: flex;
+      flex-direction: row;
       gap: 15px;
       align-items: center;
-      background: #ffffff;
-      padding: 10px;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
     }
 
     .cart-item img {
@@ -150,22 +94,49 @@
 
     .summary {
       margin-top: 20px;
-      background-color: #fff;
+      background-color: #ffffff;
       padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      border: 1px solid #ccc;
     }
 
     .summary p {
-      margin: 10px 0;
-      font-weight: 500;
+      margin: 8px 0;
+      font-weight: bold;
     }
 
-    .summary .total {
+    .summary p.total {
       font-size: 1.2rem;
+      color: #b30000;
+    }
+
+    .cart-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    #cart-quantity {
+      width: 40px;
+      text-align: center;
       font-weight: bold;
-      color: #d35400;
-      margin-top: 10px;
+      background-color: #ffffff;
+      border: 1px solid #1e3d59;
+      border-radius: 4px;
+      color: #1e3d59;
+    }
+
+    #clear-cart-btn {
+      background-color: #d9534f;
+      color: white;
+      font-size: 0.85rem;
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+
+    #clear-cart-btn:hover {
+      background-color: #b52b27;
     }
 
     @media (max-width: 768px) {
@@ -173,14 +144,20 @@
         flex-direction: column;
       }
 
-      .cart {
-        margin-top: 20px;
+      .products, .cart {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+      }
+
+      .cart-header {
+        flex-wrap: wrap;
+        gap: 8px;
       }
     }
   </style>
 </head>
 <body>
-  <header>🪑 Modern Furniture Store</header>
+  <header>🪑 Modern Furniture Shop</header>
   <div class="container">
     <div class="products" id="product-list"></div>
 
@@ -188,7 +165,7 @@
       <div class="cart-header">
         <h2>🛒 Cart</h2>
         <input id="cart-quantity" type="text" value="0" readonly />
-        <button id="clear-cart-btn" onclick="clearCart()">🗑️ Clear</button>
+        <button id="clear-cart-btn" onclick="clearCart()">🗑️ Clear Cart</button>
       </div>
       <div id="cart-items"></div>
       <div class="summary" id="summary"></div>
@@ -289,7 +266,7 @@
         div.innerHTML = `
           <img src="${item.img}" alt="${item.name}">
           <div>
-            <p>${item.name} (x${item.quantity}) - ₹${item.price} each</p>
+            <p>${item.name} (x${item.quantity}) - ₹${item.price}</p>
             <button onclick="removeOne(${index})">Remove One</button>
           </div>
         `;
@@ -304,14 +281,13 @@
       }
 
       const itemTotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      const deliveryFee = DELIVERY_FEE;
-      const beforeTax = itemTotal + deliveryFee;
+      const beforeTax = itemTotal + DELIVERY_FEE;
       const tax = beforeTax * TAX_RATE;
       const total = beforeTax + tax;
 
       summary.innerHTML = `
         <p>Items Total: ₹${itemTotal.toFixed(2)}</p>
-        <p>Delivery Fee: ₹${deliveryFee.toFixed(2)}</p>
+        <p>Delivery Fee: ₹${DELIVERY_FEE.toFixed(2)}</p>
         <p>Total Before Tax: ₹${beforeTax.toFixed(2)}</p>
         <p>Estimated Tax (10%): ₹${tax.toFixed(2)}</p>
         <p class="total">Order Total: ₹${total.toFixed(2)}</p>
