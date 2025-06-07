@@ -108,6 +108,16 @@
         font-size: 1.2rem;
         color: #8b0000;
       }
+
+      #cart-quantity {
+        width: 40px;
+        text-align: center;
+        font-weight: bold;
+        margin-left: 10px;
+        background-color: #fff7f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
@@ -116,7 +126,15 @@
       <div class="products" id="product-list"></div>
 
       <div class="cart">
-        <h2>🛒 Cart</h2>
+        <h2>
+          🛒 Cart
+          <input
+            id="cart-quantity"
+            type="text"
+            value="0"
+            readonly
+          />
+        </h2>
         <div id="cart-items"></div>
         <div class="summary" id="summary"></div>
       </div>
@@ -165,8 +183,6 @@
         const list = document.getElementById("product-list");
         list.innerHTML = "";
         products.forEach((product) => {
-          const tax = product.price * TAX_RATE;
-          const totalWithTax = product.price + tax;
           const div = document.createElement("div");
           div.className = "product";
           div.innerHTML = `
@@ -203,7 +219,10 @@
         const cartContainer = document.getElementById("cart-items");
         cartContainer.innerHTML = "";
 
+        let totalQuantity = 0;
+
         cart.forEach((item, index) => {
+          totalQuantity += item.quantity;
           const div = document.createElement("div");
           div.className = "cart-item";
           div.innerHTML = `
@@ -215,6 +234,9 @@
           `;
           cartContainer.appendChild(div);
         });
+
+        // Update quantity in input field
+        document.getElementById("cart-quantity").value = totalQuantity;
 
         updateSummary();
       }
