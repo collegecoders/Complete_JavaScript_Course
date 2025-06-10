@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10. Complex Logical Decision - Admission Criteria:
+</title>
+  </head>
+  <body>
+	<script>
+let applicantGPA = 3.4;
+let applicantSATScore = 1450;
+let isAdmitted;
+
+// First condition: GPA >= 3.5 AND SAT >= 1200
+if (applicantGPA >= 3.5 && applicantSATScore >= 1200) {
+  isAdmitted = true;
+} 
+// Second condition: GPA < 3.5 AND SAT >= 1400
+else if (applicantGPA < 3.5 && applicantSATScore >= 1400) {
+  isAdmitted = true;
+} 
+// If neither condition is met
+else {
+  isAdmitted = false;
+}
+
+console.log(isAdmitted); // true (since SAT is 1450 which meets the second condition)
+	</script>
+  </body>
+</html>

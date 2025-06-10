@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>7. Rock Paper Scissors (Determining the Winner)</title>
+  </head>
+  <body>
+	<script>
+let playerMove = "rock";
+let computerMove = "scissors";
+
+if (playerMove === computerMove) {
+  console.log("It's a Tie!");
+} else if (
+  (playerMove === "rock" && computerMove === "scissors") ||
+  (playerMove === "paper" && computerMove === "rock") ||
+  (playerMove === "scissors" && computerMove === "paper")
+) {
+  console.log("Player Wins!");
+} else {
+  console.log("Computer Wins!");
+}
+	</script>
+  </body>
+</html>
