@@ -1,0 +1,50 @@
+// 9a
+const car = {
+  brand: "Toyota",
+  model: "Camry",
+  year: 2020
+};
+
+// 9b
+console.log(car.model);  // Camry
+console.log(car.year);   // 2020
+
+// 9c
+car.year = 2022;
+
+// 9d
+car.color = "black";
+
+// 9e
+delete car.model;
+
+// 9f
+const quizScore = {
+  correct: 0,
+  wrong: 0,
+  skipped: 0
+};
+
+function markCorrect() {
+  quizScore.correct++;
+  displayScore();
+}
+
+function markWrong() {
+  quizScore.wrong++;
+  displayScore();
+}
+
+function markSkipped() {
+  quizScore.skipped++;
+  displayScore();
+}
+
+function displayScore() {
+  console.log(Correct: ${quizScore.correct}, Wrong: ${quizScore.wrong}, Skipped: ${quizScore.skipped});
+}
+
+// Example usage
+markCorrect(); // Correct: 1, Wrong: 0, Skipped: 0
+markWrong();   // Correct: 1, Wrong: 1, Skipped: 0
+markSkipped(); // Correct: 1, Wrong: 1, Skipped: 1

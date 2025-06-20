@@ -1,0 +1,33 @@
+// 9.2a) Create object, convert to JSON, store in localStorage
+const student = {
+  name: "Ravi",
+  course: "JavaScript"
+};
+const studentJSON = JSON.stringify(student);
+localStorage.setItem("student", studentJSON);
+
+// 9.2b) Retrieve, parse and log course value
+const storedStudent = localStorage.getItem("student");
+if (storedStudent) {
+  const parsedStudent = JSON.parse(storedStudent);
+  console.log("Course:", parsedStudent.course);
+}
+
+// 9.2c) Create object, stringify, log typeof before and after parsing
+const example = { x: 10, y: 20 };
+const exampleJSON = JSON.stringify(example);
+console.log("Type before parsing:", typeof exampleJSON); // string
+const parsedExample = JSON.parse(exampleJSON);
+console.log("Type after parsing:", typeof parsedExample); // object
+
+// 9.2d) Remove "student" from localStorage
+localStorage.removeItem("student");
+
+// 9.2e) Check if "student" exists and log accordingly
+const checkStudent = localStorage.getItem("student");
+if (checkStudent) {
+  const parsedCheck = JSON.parse(checkStudent);
+  console.log("Student data:", parsedCheck);
+} else {
+  console.log("No data");
+}

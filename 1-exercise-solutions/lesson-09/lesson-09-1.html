@@ -1,0 +1,26 @@
+// 9.1a) Bracket notation to access "car-model"
+const car = {
+  brand: "Toyota",
+  "car-model": "Fortuner"
+};
+console.log("9.1a Output:", car["car-model"]); // Output: Fortuner
+
+// 9.1b) Bracket notation using a variable key
+const book = {
+  title: "JS Guide",
+  author: "Alex"
+};
+let key = "author";
+console.log("9.1b Output:", book[key]); // Output: Alex
+
+// 9.1c) Manually copy properties from obj1 and obj2 into result object
+const obj1 = { x: 10, y: 20 };
+const obj2 = { z: 30, w: 40 };
+
+const result = {};
+result.a = obj1.x;         // Dot notation
+result.b = obj1["y"];      // Bracket notation
+result.c = obj2.z;
+result.d = obj2["w"];
+
+console.log("9.1c Output:", result); // Output: { a: 10, b: 20, c: 30, d: 40 }
