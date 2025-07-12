@@ -1,0 +1,38 @@
+LESSON-15 EXERCISES+ SOLUTIONS
+
+
+// 🔹 Push & Pop
+1. Create an array of your favorite fruits. Add two more fruits using push(), then remove the last fruit using pop(). What does the final array look like?
+2. Start with an empty array. Use push() to add 3 numbers, then use pop() twice. What remains in the array?
+
+// 🔹 Unshift & Shift
+3. Given an array ["b", "c"], use unshift() to add "a" at the beginning. Then use shift() to remove the first element. What is left in the array?
+4. Use unshift() to add 3 numbers to the beginning of an array, and then remove the first two using shift(). What is the output?
+
+// 🔹 Splice
+5. Given ["a", "b", "c", "d"], use splice() to replace "b" and "c" with "x" and "y". What is the result?
+6. Remove the last 2 elements of an array using splice().
+7. Insert "middle" at index 2 in the array ["start", "next", "next", "end"] using splice() without deleting anything.
+
+// 🔹 Includes & IndexOf
+8. Check if the value 100 exists in the array [10, 20, 30, 100] using includes().
+9. Find the index of the word "hello" in the array ["hi", "hello", "hey"].
+10. If an element is not found using indexOf(), what value does it return?
+
+// 🔹 Concat
+11. Concatenate two arrays: [1, 2] and [3, 4] into a new array.
+12. Merge three arrays: ["a"], ["b", "c"], and ["d"] into one using concat().
+
+// 🔹 Join
+13. Convert the array ["JavaScript", "is", "fun"] into a sentence using join().
+14. Use join() to turn [1, 2, 3, 4] into the string "1-2-3-4".
+
+// 🔹 Copying Arrays
+15. Copy an array [1, 2, 3] using slice(), then modify the copied array. Does the original array change?
+16. Use the spread operator to copy an array and add a new value to the end. What does the copied array look like?
+
+// 🔹 Destructuring
+17. Destructure the first two elements from [10, 20, 30] into separate variables.
+18. Destructure an array [1, 2, 3, 4] to skip the second value and capture the third in a variable.
+19. Use array destructuring with the rest operator to store the first value in x and the rest in y.
+20.
